@@ -1,0 +1,32 @@
+<ion-view title="Agile Todos">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <button ng-hide="isLogin" class="button" ng-click="fb_login()">Login</button>
+    <button ng-show="isLogin" class="button" >{{LoginUser.name}}</button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    
+    <!-- input todo -->
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Todo" ng-model="newItem">
+      </label>
+      <button class="button button-small" ng-click="addTodo(newItem)">
+        Add
+      </button>
+    </div>
+    
+    <!-- todos list -->
+    <div class="card" ng-repeat="todo in todos">
+      <div class="item item-toggle">
+        {{ todo.author }} - {{ todo.text}}
+        <label class="toggle toggle-energized">
+           <input type="checkbox" ng-checked="todo.done" ng-click="toggleDone(todo)">
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+        </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
